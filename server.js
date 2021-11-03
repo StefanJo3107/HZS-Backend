@@ -15,15 +15,33 @@ const pitanjeRoute = require("./routes/postavipitanje");
 //middlewares
 app.use("/prijava", prijavaRoute);
 app.use("/pitanje", pitanjeRoute);
-app.use(
-    cors({
-        origin: [
-            "http://localhost:3000",
-            "https://hzs.fonis.rs/4.0",
-            "https://stefanjo3107.github.io/HZS-4.0-Site/",
-        ],
-    })
-);
+// app.use(
+//     cors({
+//         origin: [
+//             "http://localhost:3000",
+//             "https://hzs.fonis.rs/4.0",
+//             "https://stefanjo3107.github.io/HZS-4.0-Site/",
+//         ],
+//     })
+// );
+app.use(function (req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+    );
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "X-Requested-With,content-type"
+    );
+    res.setHeader("Access-Control-Allow-Credentials", true);
+    // handle OPTIONS method
+    if ("OPTIONS" == req.method) {
+        return res.sendStatus(200);
+    } else {
+        next();
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);

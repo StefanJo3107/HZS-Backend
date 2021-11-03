@@ -33,15 +33,15 @@ const sendEmail = (to, subject, text) => {
 };
 
 const router = express.Router();
-router.use(
-    cors({
-        origin: [
-            "http://localhost:3000",
-            "https://hzs.fonis.rs/4.0",
-            "https://stefanjo3107.github.io/HZS-4.0-Site/",
-        ],
-    })
-);
+// router.use(
+//     cors({
+//         origin: [
+//             "http://localhost:3000",
+//             "https://hzs.fonis.rs/4.0",
+//             "https://stefanjo3107.github.io/HZS-4.0-Site/",
+//         ],
+//     })
+// );
 router.post("/", (req, res) => {
     try {
         sendEmail(
