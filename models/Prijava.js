@@ -14,7 +14,7 @@ const ClanSchema = mongoose.Schema({
         required: true,
     },
     razred: {
-        type: Number,
+        type: String,
         required: true,
     },
     brojTelefona: {
