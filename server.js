@@ -15,7 +15,15 @@ const pitanjeRoute = require("./routes/postavipitanje");
 //middlewares
 app.use("/prijava", prijavaRoute);
 app.use("/pitanje", pitanjeRoute);
-app.use(cors());
+app.use(
+    cors({
+        origin: [
+            "http://localhost:3000",
+            "https://hzs.fonis.rs/4.0",
+            "https://stefanjo3107.github.io/HZS-4.0-Site/",
+        ],
+    })
+);
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
